@@ -1,0 +1,14 @@
+.addTaskContainer {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+  gap: 1rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.addTaskField {
+  height: 1rem;
+  width: 20rem;
+}

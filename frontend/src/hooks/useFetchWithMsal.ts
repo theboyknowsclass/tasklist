@@ -59,7 +59,6 @@ export const useFetchWithMsal = (msalRequest: PopupRequest) => {
       const response = await fetch(endpoint, options);
 
       const result = await response.json();
-      console.log("response: ", result);
       return result as TReturn;
     } catch (e) {
       console.error(e);

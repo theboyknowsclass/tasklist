@@ -43,7 +43,7 @@ app.get("/", (req: Request, res: Response) => {
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
-  console.log("Listening on port " + port);
+  console.info("Listening on port " + port);
 });
 
 module.exports = app;

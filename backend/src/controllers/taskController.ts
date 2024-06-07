@@ -10,7 +10,6 @@ export const getTasks = asyncHandler(async (_req, res, _next) => {
     const tasks: Task[] = result.rows;
     res.send(tasks);
   } catch (error) {
-    console.error("Error fetching tasks", error);
     res.status(500).json({ error: "Error fetching tasks" });
   }
 });
@@ -57,7 +56,6 @@ export const updateTasks = asyncHandler(async (req, res, _next) => {
     res.status(200);
   } catch (e) {
     res.status(500).json({ e });
-    console.error("Error saving tasks", e);
     await client.query("ROLLBACK");
   } finally {
     client.release();

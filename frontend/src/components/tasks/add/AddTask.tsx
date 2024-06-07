@@ -17,9 +17,6 @@ export const AddTask: React.FC = () => {
       return;
     }
 
-    // Add your logic here to update the state with the new task
-    console.log("Adding task:", taskName);
-
     addTask({
       name: taskName,
       sortorder: tasks.length,

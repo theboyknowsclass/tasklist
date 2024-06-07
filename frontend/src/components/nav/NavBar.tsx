@@ -1,6 +1,6 @@
 import { AppBar, Button, Divider, Toolbar, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../../hooks";
 
 export const NavBar = ({ title }: { title: string }) => {
   const navigate = useNavigate();

@@ -13,11 +13,11 @@ export const Auth = () => {
   useEffect(() => {
     instance
       .handleRedirectPromise()
-      .then((tokenResponse) => {
+      .then(() => {
         // Check if the tokenResponse is null
         // If the tokenResponse !== null, then you are coming back from a successful authentication redirect.
         // If the tokenResponse === null, you are not coming back from an auth redirect.
-        console.log("TOKEN RESPONSE", tokenResponse);
+        // TODO: handle other userflows like password reset, etc.
       })
       .catch((error) => {
         // handle error, either in the library or coming back from the server

@@ -1,14 +1,15 @@
 import { Button, TextField, Tooltip } from "@mui/material";
 import React, { useState } from "react";
 import styles from "./AddTask.module.css";
-import { useTaskListStore } from "../../store/useTaskListStore";
+import { useTaskListStore } from "../../../store";
 
 export const AddTask: React.FC = () => {
   const [taskName, setTaskName] = useState<string | null>(null);
   const addTask = useTaskListStore((state) => state.addTask);
+  const tasks = useTaskListStore((state) => state.tasks);
 
   const handleTaskChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTaskName((state) => event.target.value);
+    setTaskName(() => event.target.value);
   };
 
   const handleAddTask = () => {
@@ -21,8 +22,8 @@ export const AddTask: React.FC = () => {
 
     addTask({
       name: taskName,
-      sortOrder: 0,
-      id: Math.random().toString(),
+      sortorder: tasks.length,
+      id: crypto.randomUUID(),
     });
     setTaskName(null);
   };
@@ -35,6 +36,7 @@ export const AddTask: React.FC = () => {
         onChange={handleTaskChange}
         variant="outlined"
         size="small"
+        inputProps={{ maxLength: 250 }}
       />
       <Tooltip title={taskName ? "Add Task" : "Please Enter a Task Name"} arrow>
         <div>

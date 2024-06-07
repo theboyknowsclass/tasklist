@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
-import { NavBar } from "../NavBar";
-import { useAuth } from "../../hooks/useAuth";
 import styles from "./Other.module.css";
+import { NavBar } from "..";
+import { useAuth } from "../../hooks";
 
 export const Other = () => {
   const { userName } = useAuth();

@@ -1,4 +1,36 @@
 services:
+  db:
+    image: postgres:16-alpine
+    expose:
+      - 6000
+    ports:
+      - 6000:5432
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=task
+    networks:
+      - express-postgres
+  backend:
+    build:
+      context: backend
+      dockerfile: DockerFile
+    ports:
+      - 5000:5000
+    volumes:
+      - ./backend:/app
+    environment:
+      - DATABASE_HOST=db
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    command: npm run dev
+    networks:
+      - express-postgres
+      - react-express
+    depends_on:
+      - db
   frontend:
     build:
       context: frontend
@@ -6,6 +38,14 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./frontend:/app
+      - ./frontend:/usr/src/app
     environment:
       - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - backend
+    networks:
+      - react-express
+networks:
+  react-express:
+  express-postgres:

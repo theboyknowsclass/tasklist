@@ -1,6 +1,6 @@
 import { Draggable, DraggableProvided } from "@hello-pangea/dnd";
-import { Task } from "../../domain/task";
 import styles from "./TaskItem.module.css";
+import { Task } from "../../../domain/task";
 
 interface TaskProps {
   task: Task;

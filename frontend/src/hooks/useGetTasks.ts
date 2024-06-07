@@ -1,21 +1,25 @@
-import { useQuery } from "react-query";
+import { UseQueryResult, useQuery } from "react-query";
 import { protectedResources } from "../authConfig";
 import { Task } from "../domain/task";
-import useFetchWithMsal from "./useFetchWithMsal";
+import { useCallback } from "react";
+import { useFetchWithMsal } from ".";
 
-const useGetTasksQuery = () => {
-  const { executeBasic } = useFetchWithMsal<Task[]>({
+export const useGetTasks = (): UseQueryResult<Task[], Error> => {
+  const { executeFetch } = useFetchWithMsal({
     scopes: protectedResources.apiTaskList.scopes.read,
   });
 
-  const queryFunction = async () => {
-    return await executeBasic("GET", protectedResources.apiTaskList.endpoint);
-  };
+  const queryFunction = useCallback(async () => {
+    return await executeFetch<null, Task[]>(
+      "GET",
+      protectedResources.apiTaskList.endpoint
+    );
+  }, [executeFetch]);
 
-  const query = useQuery({
+  const query = useQuery<Task[], Error>({
     queryKey: ["tasks"],
     queryFn: queryFunction,
-    enabled: false,
+    // enabled: false,
   });
 
   return query;

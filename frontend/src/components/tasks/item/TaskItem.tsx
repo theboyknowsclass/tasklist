@@ -9,7 +9,7 @@ interface TaskProps {
 
 export const TaskItem = ({ task, index }: TaskProps) => {
   return (
-    <Draggable draggableId={task.id} index={index}>
+    <Draggable draggableId={task.id} index={index} data-testid={task.id}>
       {(provided: DraggableProvided) => (
         <div
           className={styles.taskItem}

@@ -29,14 +29,26 @@ export const NavBar = ({ title }: { title: string }) => {
           {title}
         </Typography>
         <Divider orientation="vertical" flexItem />
-        <Button color="inherit" onClick={tasksClicked}>
+        <Button
+          color="inherit"
+          onClick={tasksClicked}
+          data-testid="task-button-nav"
+        >
           Tasks
         </Button>
-        <Button color="inherit" onClick={otherClicked}>
+        <Button
+          color="inherit"
+          onClick={otherClicked}
+          data-testid="other-button-nav"
+        >
           Other
         </Button>
         <Divider orientation="vertical" flexItem />
-        <Button color="inherit" onClick={logOutClicked}>
+        <Button
+          color="inherit"
+          onClick={logOutClicked}
+          data-testid="lopgout-button-nav"
+        >
           LOG OUT
         </Button>
       </Toolbar>

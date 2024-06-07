@@ -1,7 +1,7 @@
 import { InteractionStatus } from "@azure/msal-browser";
 import { useMsal } from "@azure/msal-react";
 
-interface UseAuth {
+export interface UseAuth {
   isAuthenticated: boolean;
   userName: string | null;
   token: string | null;

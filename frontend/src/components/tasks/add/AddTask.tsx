@@ -31,6 +31,7 @@ export const AddTask: React.FC = () => {
   return (
     <div className={styles.addTaskContainer}>
       <TextField
+        data-testid="task-name-input"
         label="Task"
         value={taskName || ""}
         onChange={handleTaskChange}
@@ -41,6 +42,7 @@ export const AddTask: React.FC = () => {
       <Tooltip title={taskName ? "Add Task" : "Please Enter a Task Name"} arrow>
         <div>
           <Button
+            data-testid="add-task-button"
             variant="contained"
             color="primary"
             onClick={handleAddTask}

@@ -18,9 +18,9 @@ export const AddTask: React.FC = () => {
     }
 
     addTask({
+      id: crypto.randomUUID(),
       name: taskName,
       sortorder: tasks.length,
-      id: crypto.randomUUID(),
     });
     setTaskName(null);
   };

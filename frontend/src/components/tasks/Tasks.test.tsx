@@ -75,7 +75,15 @@ describe("Tasks", () => {
 
     unmount();
 
-    //screen.debug();
+    const { unmount: unmount2 } = render(
+      <MockWrapper>
+        <Tasks />
+      </MockWrapper>
+    );
+
+    unmount2();
+
+    screen.debug();
 
     // check update is sent
     expect(mutate).toHaveBeenCalledWith([

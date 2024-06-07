@@ -21,14 +21,23 @@ Based on the following spec:
 
 1. Global list of tasks, not per user
 2. No method to remove tasks
+3. The only method to save the task list is to 'unmount' the component - i.e. navigate away from the screen
 
 ## Technologies Used
 
 1. I'm using Azure AD B2C for Auth which supports plain email or Microsoft Accounts as an IdP
 2. The main Express endpoints for task data are protected using MSAL as well
+3. Frontend is built using React, Typescript, Vite, React Query, with tests in Vitest
+4. Backend is built in Express using the Pg package
 
 ## Futher Comments
 
 1. Rather than have a seperate Auth page, i default to the User Login Flow
 2. Currently the Progres database user is hardcoded on the express side, this could be enhanced with Entra ID or similar for more granular permissions
 3. Currently we have hardcoded SQL queries encapsulate the queries in posgres functions / procedures.
+
+---
+
+# Instructions on running
+
+the solution is containerised using docker, and can be run with 'docker compose up' or 'docker compose up --build' is changes are needed

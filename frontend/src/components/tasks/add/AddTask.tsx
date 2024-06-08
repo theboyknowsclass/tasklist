@@ -4,7 +4,7 @@ import styles from "./AddTask.module.css";
 import { useTaskListStore } from "../../../store";
 
 export const AddTask: React.FC = () => {
-  const [taskName, setTaskName] = useState<string | null>(null);
+  const [taskName, setTaskName] = useState<string | null>(null); // using this to 'validate' the input - (check if not null)
   const addTask = useTaskListStore((state) => state.addTask);
   const tasks = useTaskListStore((state) => state.tasks);
 

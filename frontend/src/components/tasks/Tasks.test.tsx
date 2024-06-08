@@ -50,6 +50,7 @@ describe("Tasks", () => {
     // check button is enabled after text is entered
     expect(addButton.hasAttribute("disabled")).toBe(false);
 
+    // add task
     fireEvent.click(addButton);
 
     // check task is added to list
@@ -74,16 +75,6 @@ describe("Tasks", () => {
     );
 
     unmount();
-
-    const { unmount: unmount2 } = render(
-      <MockWrapper>
-        <Tasks />
-      </MockWrapper>
-    );
-
-    unmount2();
-
-    screen.debug();
 
     // check update is sent
     expect(mutate).toHaveBeenCalledWith([

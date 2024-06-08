@@ -32,12 +32,19 @@ Based on the following spec:
 
 ## Futher Comments
 
-1. Rather than have a seperate Auth page, i default to the User Login Flow
+1. Rather than have a seperate authentication page, i default to the User Login Flow.
 2. Currently the Progres database user is hardcoded on the express side, this could be enhanced with Entra ID or similar for more granular permissions
-3. Currently we have hardcoded SQL queries encapsulate the queries in posgres functions / procedures.
+3. Currently we have hardcoded SQL queries - we could encapsulate the queries in postgres functions / procedures.
+4. Secrets and config items are hardcoded (mainly in authconfig.ts).  These should be extracted to .env files.
 
 ---
 
-# Instructions on running
+# Instructions
 
-the solution is containerised using docker, and can be run with 'docker compose up' or 'docker compose up --build' is changes are needed
+the solution is containerised using docker, and can be run with `docker compose up` or `docker compose up --build` if changes are needed
+
+### Or
+
+1. Create a blank postgres db with the init script under `./db/init.sql`
+2. run the backend with `npm run dev`
+3. run the frontend with `npm run dev`
